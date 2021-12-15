@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/grid.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/sidebar.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../assets/font/fontawesome-free-6.0.0-beta2-web/css/all.min.css">
+    <link rel="stylesheet" href="../assets/font/fontawesome-free-6.0.0-beta2-web/css/all.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="#"><img src="../assets/image/logo.png" id="icon-hust" alt=""></a>
+                <div class="icon-home" id="icon-home">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="input-search">
+                    <div class="icon-search"></div>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-right-avatar" id="avatar-header"></div>
+                <i class="fas fa-bell"></i>
+                <div class="sign-out flex" id="logout-header">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <div>Sign out</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="left-sidebar">
+            <ol class="nav-links">
+                <li class=" youarehere">
+                    <i class="fas fa-house-user"></i>
+                    <a href="/html/home.html">Home</a>
+                </li>
+                <li class=" youarehere">
+                    <i class="far fa-question-circle"></i>
+                    <a href="/html/questiondetail.html">Questions</a>
+                </li>
+                <li class=" youarehere">
+                    <i class="fas fa-user-tag"></i>
+                    <a href="/html/tags.html">Tags</a>
+                </li>
+                <li class=" youarehere background-grep">
+                    <i class="fas fa-users"></i>
+                    <a href="/html/profile.html">Users</a>
+                </li>
+                <li class=" youarehere">
+                    <i class="far fa-question-circle"></i>
+                    <a href="/html/askquestion.html">Ask Question</a>
+                </li>
+            </ol>
+        </div>
+        <div class="grid wide content">
+            <div class="grid__row main-content">
+                <div class="profile-nav grid__column-3">
+                    <div class="panel">
+                        <div class="user-heading round">
+                            <a href="#">
+                                <img src="../assets/image/sample-avatar.jpg" alt="">
+                            </a>
+                            <h1 class="user-name" id="user-name">Trinh Ba Thang</h1>
+                            <p class="user-email" id="user-email">bathang8420@gmail.com</p>
+                        </div>
+
+                        <ul class="user-nav">
+                            <li class="active"><a href="#"> <i class="fas fa-user"></i> Profile</a></li>
+                            <li><a href="#"> <i class="fas fa-calendar"></i> Recent Activity </a></li>
+                            <li><a href="#" id="open-edit-profile"> <i class="fas fa-edit"></i> Edit profile</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="profile-info grid__column-9">
+                    <div class="panel">
+                        <div class="panel-element">
+                            <div class="bio-graph-heading">
+                                About
+                            </div>
+                            <div class="bio-graph-info">
+                                <div class="bio-description" id="user-description">
+                                    Description about me
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-element">
+                            <div class="bio-graph-heading">
+                                Stats
+                            </div>
+                            <div class="bio-graph-info stats-info">
+                                <div class="stats-element">
+                                    <div class="stats-number">
+                                        1
+                                    </div>
+                                    <div class="stats-label">
+                                        reputation
+                                    </div>
+                                </div>
+                                <div class="stats-element">
+                                    <div class="stats-number">
+                                        5
+                                    </div>
+                                    <div class="stats-label">
+                                        reached
+                                    </div>
+                                </div>
+                                <div class="stats-element">
+                                    <div class="stats-number" id="user-count-answer">
+                                        0
+                                    </div>
+                                    <div class="stats-label">
+                                        answers
+                                    </div>
+                                </div>
+                                <div class="stats-element">
+                                    <div class="stats-number" id="user-count-question">
+                                        0
+                                    </div>
+                                    <div class="stats-label">
+                                        questions
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-element">
+                            <div class="bio-graph-heading">
+                                Tags
+                            </div>
+                            <div class="bio-graph-info fav-tags" id="user-tags">
+                                <a href="#" class="tag">Java</a>
+                                <a href="#" class="tag">C++</a>
+                                <a href="#" class="tag">Python</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <div class="footer-container">
+            <div class="site-footer-logo">
+                <a href=""><i class="fas fa-apple-alt"></i></a>
+            </div>
+            <div class="site-footer-nav">
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Stack Overflow</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Products</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Stack Exchange</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="site-footer-copyright">
+                <ul class="footer-links">
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Facebook</a></li>
+                    <li><a href="">Twitter</a></li>
+                    <li><a href="">LinkedIn</a></li>
+                    <li><a href="">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 style="margin-bottom: 20px;">Infomation User</h3>
+            <div class="detail-user">
+                <div class="image-avatar">
+                    <a href="#">
+                        <img src="../assets/image/sample-avatar.jpg" alt="">
+                    </a>
+                </div>
+                <div class="data-user">
+                    <h3 style="margin-bottom: 20px;">Name</h3>
+                    <input type="text" id="user-name-edit">
+                    <h3 style="margin-bottom: 20px;">Description</h3>
+                    <textarea name="post-text" id="description-edit" cols="30" rows="10"></textarea>
+                    <h3 style="margin-bottom: 20px;">Watched Tags</h3>
+                    <div class="tag-flex">
+                        <div class="left" style="width: 50%;">
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="37dd9bb0-4c53-4134-31de-23e177779933"
+                                    name="5" value="HTML">
+                                <label for="html">HTML</label>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="1b691e79-236d-5b5a-9d20-39c2f00615e8"
+                                    name="6" value="CSS">
+                                <label for="css">CSS</label>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="148ed882-32b8-218e-9c20-39c2f00615e8"
+                                    name="7" value="Javascript">
+                                <label for="javascript">Javascript</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="354f1b13-17bf-1b52-87d5-ba100c6f7bce"
+                                    name="8" value="Java">
+                                <label for="Java">Java</label>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="25c6c36e-1668-7d10-6e09-bf1378b8dc91"
+                                    name="1" value="C#">
+                                <label for="C#">C#</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="3b86d2ed-446c-5fce-56be-406293204378"
+                                    name="2" value="Python">
+                                <label for="Python">Python</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="3700cc49-55b5-69ea-4929-a2925c0f334d"
+                                    name="3" value="Ktolin">
+                                <label for="Ktolin">Ktolin</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="6b47b37f-3123-3ce7-14cf-9712082ff6cb"
+                                    name="4" value="C">
+                                <label for="C">C</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-save">
+                <button id="btn-save" class="btn-ask">Save</button>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/header.js"></script>
+
+</body>
+
+</html>

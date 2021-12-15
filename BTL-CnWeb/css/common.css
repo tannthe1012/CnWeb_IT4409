@@ -1,0 +1,10 @@
+@font-face {
+    font-family: 'notosans-regular';
+    src: url('../assets/fonts/notosans-regular.2cb88a13.woff2') format('opentype');
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: notosans-regular;
+}

@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/questiondetail.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../assets/font/fontawesome-free-6.0.0-beta2-web/css/all.min.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="header">
+        <div class="header-container">
+            <div class="header-left">
+                <a href="#"><img src="../assets/image/logo.png" id="icon-hust" alt=""></a>
+                <div class="icon-home" id="icon-home">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="input-search">
+                    <div class="icon-search"></div>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="header-right-avatar" id="avatar-header"></div>
+                <i class="fas fa-bell"></i>
+                <div class="sign-out flex" id="logout-header">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <div>Sign out</div>
+                </div>
+                <!-- <button class="btn-ask">Ask Question</button> -->
+            </div>
+        </div>
+
+    </div>
+    <div class="container">
+        <div class="left-sidebar">
+            <ol class="nav-links">
+                <li class=" youarehere">
+                    <i class="fas fa-house-user"></i>
+                    <a href="/html/home.html">Home</a>
+                </li>
+                <li class=" youarehere background-grep">
+                    <i class="far fa-question-circle"></i>
+                    <a href="/html/questiondetail.html">Questions</a>
+                </li>
+                <li class=" youarehere">
+                    <i class="fas fa-user-tag"></i>
+                    <a href="/html/tags.html">Tags</a>
+                </li>
+                <li class=" youarehere">
+                    <i class="fas fa-users"></i>
+                    <a href="/html/profile.html">Users</a>
+                </li>
+                <li class=" youarehere">
+                    <i class="far fa-question-circle"></i>
+                    <a href="/html/askquestion.html">Ask Question</a>
+                </li>
+            </ol>
+        </div>
+        <div class="content">
+            <div class="question-header">
+                <h1 id="question-title">Keycloak SPIs jar file doesn't get deployed</h1>
+                <button class="btn-ask" id="question-ask">Ask Question</button>
+            </div>
+            <div class="d-flex-question">
+                <div class="flex-item">
+                    <span>Asked</span>
+                    <div id="question-header-time">today</div>
+                </div>
+                <div class="flex-item">
+                    <span>Viewed </span>
+                    <div id="question-header-view">5</div>
+                </div>
+                <div class="flex-item">
+                    <span>Owner </span>
+                    <div id="question-header-owner">5</div>
+                </div>
+            </div>
+
+            <div class="mainbar">
+                <div class="question flex">
+                    <div class="vote-cell">
+                        <button id="upvote-question" class="icon-upvote"><i class="fas fa-thumbs-up"></i></button>
+                        <div class="count-vote" id="countlike-question">16</div>
+                        <button id="downvote-question" class="icon-downvote"><i class="fas fa-thumbs-down"></i></button>
+                    </div>
+                    <div class="question-main">
+                        <div class="question-content" id="question-content">
+    <p>When I deploy my jar, my SPIs within it, do not get added. I can’t find them on the
+        Server Info page on Keycloak’s dashboard, or anywhere else.</p>
+    <p>Except, I do see my jar added to the <code>themeResources</code> section of Server Info.
+    </p>
+    <p>Due to this, I assumed there’s an issue with the Java SPIs I try to deploy within the
+        same jar. I suspect my <code>jboss-deployment-structure.xml</code> isn’t correct. I have
+        bunch of maven dependencies that I use in my SPIs but I didn’t define those in the JBoss
+        XML file.</p>
+    <p>Should all dependencies be defined there, or I should just keep the org.keycloak and
+        org.jboss?</p>
+    <p>My jboss-deployment-structure.xml looks like this</p>
+    <pre class="default s-code-block">
+        <code class="hljs language-xml"><span class="hljs-meta">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">jboss-deployment-structure</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">deployment</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">dependencies</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">module</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"org.keycloak.keycloak-core"</span>/&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">module</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"org.keycloak.keycloak-server-spi"</span>/&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">module</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"org.keycloak.keycloak-server-spi-private"</span>/&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">module</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"org.keycloak.keycloak-services"</span>/&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">module</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"org.keycloak.keycloak-saml-core-public"</span>/&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">module</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"org.jboss.logging"</span>/&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">dependencies</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">deployment</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">jboss-deployment-structure</span>&gt;</span>
+        </code>
+    </pre>
+    <p>If this isn't an issue, what could possibly be?</p>
+                        </div>
+                        <div class="question-tags" id="question-tags">
+                            <a href="" class="post-tags">javascript</a>
+                            <a href="" class="post-tags">html</a>
+                            <a href="" class="post-tags">css</a>
+                            <a href="" class="post-tags">reactjs</a>
+                            <a href="" class="post-tags">jquery</a>
+                        </div>
+                    </div>
+                </div>
+                <h4><span id=count-answer>3</span> Answer</h3>
+                <div class="answers" id="total-answer">
+                    <div class="answer flex">
+                        <div class="vote-cell">
+                            <button id="upvote-question" class="icon-upvote"><i class="fas fa-thumbs-up"></i></button>
+                            <div class="count-vote">16</div>
+                            <button id="downvote-question" class="icon-downvote"><i class="fas fa-thumbs-down"></i></button>
+                        </div>
+                        <div class="question-main">
+                            <div class="answer-content">
+                                By default all files of the application, on a device that uses content protection, are encrypted. If you try to read them before they are decrypted(by the OS) you will get nil
+                                . The files are decrypted and they are available shortly after the user unlocks her phone, this might change and be more strict if you set a different value for the data protection entitlement. 
+                                So the data might not be available when the application launches because they are not yet decrypted. This might be one reason that you get nil some times, the solution would be to wait to be notified in the app delegate that they data are ready before you read them.
+                                The answers to all parts of the second questions are NO. There is no documented configuration that the app needs to do after an update that might affect the main Bundle
+                                . The user can not open an application if it is in the process of updating. The access to the main Bundle is thread-safe.
+                            </div>
+                            <div class="answer-detail">
+                                <div class="answer-time">Answered Dec 5 at 13:59</div>
+                                <div class="answer-owner">Christos Koninis</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="answer flex">
+                        <div class="vote-cell">
+                            <button id="upvote-question" class="icon-upvote"><i class="fas fa-thumbs-up"></i></button>
+                            <div class="count-vote">16</div>
+                            <button id="downvote-question" class="icon-downvote"><i class="fas fa-thumbs-down"></i></button>
+                        </div>
+                        <div class="question-main">
+                            <div class="answer-content">
+                                By default all files of the application, on a device that uses content protection, are encrypted. If you try to read them before they are decrypted(by the OS) you will get nil
+                                . The files are decrypted and they are available shortly after the user unlocks her phone, this might change and be more strict if you set a different value for the data protection entitlement. 
+                                So the data might not be available when the application launches because they are not yet decrypted. This might be one reason that you get nil some times, the solution would be to wait to be notified in the app delegate that they data are ready before you read them.
+                                The answers to all parts of the second questions are NO. There is no documented configuration that the app needs to do after an update that might affect the main Bundle
+                                . The user can not open an application if it is in the process of updating. The access to the main Bundle is thread-safe.
+                            </div>
+                            <div class="answer-detail">
+                                <div class="answer-time">Answered Dec 5 at 13:59</div>
+                                <div class="answer-owner">Christos Koninis</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    <div class="answer flex">
+                        <div class="vote-cell">
+                            <button id="upvote-question" class="icon-upvote"><i class="fas fa-thumbs-up"></i></button>
+                            <div class="count-vote">16</div>
+                            <button id="downvote-question" class="icon-downvote"><i class="fas fa-thumbs-down"></i></button>
+                        </div>
+                        <div class="question-main">
+                            <div class="answer-content">
+                                By default all files of the application, on a device that uses content protection, are encrypted. If you try to read them before they are decrypted(by the OS) you will get nil
+                                . The files are decrypted and they are available shortly after the user unlocks her phone, this might change and be more strict if you set a different value for the data protection entitlement. 
+                                So the data might not be available when the application launches because they are not yet decrypted. This might be one reason that you get nil some times, the solution would be to wait to be notified in the app delegate that they data are ready before you read them.
+                                The answers to all parts of the second questions are NO. There is no documented configuration that the app needs to do after an update that might affect the main Bundle
+                                . The user can not open an application if it is in the process of updating. The access to the main Bundle is thread-safe.
+                            </div>
+                            <div class="answer-detail">
+                                <div class="answer-time">Answered Dec 5 at 13:59</div>
+                                <div class="answer-owner">Christos Koninis</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="your-answer">
+                    <h3>Your Answer</h3>
+                    <div class="content-answer">
+                        <textarea name="post-text" id="content-your-answer" cols="30" rows="10"></textarea>
+                    </div>
+                    <button class="btn-ask" id="btn-post-answer">Post Your Answer</button>
+                </div>
+
+            </div>
+            <div class="sidebar">
+                <div class="sidebar-header">
+                    <div class="header-sidebar">The Overflow Blog</div>
+                    <div class="sidebarwidget">
+                        <i class="fas fa-pen"></i>
+                        <div>
+                            Exploding turkeys and how not to thaw your frozen bird: Top turkey questions...</div>
+                    </div>
+                    <div class="header-sidebar">
+                        Featured on Meta
+                    </div>
+                    <div class="sidebarwidget">
+                        <i class="fas fa-pen"></i>
+                        <div>
+                            Reducing the weight of our footer</div>
+                    </div>
+                    <div class="sidebarwidget">
+                        <i class="fas fa-pen"></i>
+                        <div>Reducing the weight of our footer</div>
+                    </div>
+                    <div class="header-sidebar">
+                        Hot Meta Posts
+                    </div>
+                    <div class="sidebarwidget">
+                        <i class="fas fa-pen"></i>
+                        <div>Reducing the weight of our footer</div>
+                    </div>
+                    <div class="sidebarwidget">
+                        <i class="fas fa-pen"></i>
+                        <div>Reducing the weight of our footer</div>
+                    </div>
+                    <div class="sidebarwidget">
+                        <i class="fas fa-pen"></i>
+                        <div>Reducing the weight of our footer</div>
+                    </div>
+                </div>
+                <div class="question-main">
+
+                </div>
+
+                
+
+
+
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-container">
+            <div class="site-footer-logo">
+                <a href=""><i class="fas fa-apple-alt"></i></a>
+            </div>
+            <div class="site-footer-nav">
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Stack Overflow</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Products</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+                <div class="site-footer-col">
+                    <h5 class="title-footer">Stack Exchange</h5>
+                    <ul class="footer-links">
+                        <li><a href="">Questions</a></li>
+                        <li><a href="">Jobs</a></li>
+                        <li><a href="">Developer Jobs Directory</a></li>
+                        <li><a href="">Salary Calculator</a></li>
+                        <li><a href="">Help</a></li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="site-footer-copyright">
+                <ul class="footer-links">
+                    <li><a href="">Blog</a></li>
+                    <li><a href="">Facebook</a></li>
+                    <li><a href="">Twitter</a></li>
+                    <li><a href="">LinkedIn</a></li>
+                    <li><a href="">Instagram</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 style="margin-bottom: 20px;">Your answer</h3>
+            <textarea name="post-text" id="content-your-answer-update" cols="30" rows="10"></textarea>
+            <button id="btn_update_answer" class="btn-ask">Update Answer</button>
+        </div>
+
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="../js/questiondetail.js"></script>
+    <script src="../js/header.js"></script>
+
+</body>
+
+</html>

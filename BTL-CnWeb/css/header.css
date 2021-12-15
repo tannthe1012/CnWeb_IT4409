@@ -1,0 +1,112 @@
+.header {
+    box-sizing: border-box; 
+    position: sticky; 
+    top: 0px; 
+    min-height: 50px;
+    z-index: 5050;
+    height: 50px;
+    width: 100%;
+    border-color: #dee0e1!important;
+    border-bottom-style: solid;
+    border-width: 1px;
+    box-shadow: 0 3px 6px rgb(0 0 0 / 4%);
+    background-color: #fff;
+    border-top: 3px solid #f48225 !important;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    font-family: notosans-regular;
+}
+
+.header-container {
+    box-sizing: border-box; 
+    max-width: 1337px; 
+    margin-left: auto; 
+    margin-right: auto;
+    display: flex;
+    height: 100%;
+   justify-content: space-between;
+}
+.input-search {
+    border: 1px solid #dee0e1!important;
+    border-radius: 3px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    width: 320px;
+}
+.header-left {
+    display: flex;
+    align-items: center;
+}
+.header-container a img{
+    max-height: 20px;
+    margin: auto;
+    
+}
+.header-container a {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    
+}
+.icon-home {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+.icon-home:hover {
+    background-color: rgb(196, 205, 212);
+}
+.header-container i {
+    font-size: 30px;
+    margin: 0 auto;
+}
+
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+.header-right i {
+    margin: 10px;
+    color: #898989 !important;
+}
+.header-right-avatar {
+    border-radius: 50%;
+    background-image: url('../assets/image/Sprites.64af8f61.svg');
+    background-repeat: no-repeat;
+    background-position: -352px -894px;
+    margin-right: 6px;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    min-height: 32px;
+    margin-right: 10px;
+}
+
+.input-search input {
+    border: none;
+    outline: none;
+}
+.icon-search {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: 16px;
+    height: 16px;
+    min-width: 16px;
+    min-height: 16px;
+    background: url('../assets/image/Sprites.64af8f61.svg') no-repeat -992px -360px;
+}
+
+.flex {
+    display: flex;
+    align-items: center;
+}
+.sign-out div {
+    font-size: 15px;
+    font-weight: bold;
+}
