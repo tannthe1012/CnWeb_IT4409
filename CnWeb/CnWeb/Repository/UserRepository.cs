@@ -58,7 +58,19 @@ namespace CnWeb.Repository
                 "  LEFT JOIN (SELECT COUNT(*) AS countquestion, q.UserId AS Idd FROM question q GROUP BY q.UserId) AS uq ON uq.Idd = u.Id" +
                 $"   WHERE u.Id = '{id}'";
             var entity = _dbConnection.QueryFirstOrDefault<User>(sql);
-
+            var sqlgetquestion = $"SELECT * FROM question q WHERE q.UserId = '{id}'";
+            entity.Questions = _dbConnection.Query<Question>(sqlgetquestion).ToList();
+            if (entity.Questions.Count() > 0)
+            {
+                foreach (var question in entity.Questions)
+                {
+                    var sqltag = "SELECT t.Id, t.Name FROM questiontag q" +
+                    "  LEFT JOIN tags t ON q.TagId = t.Id" +
+                    $"  WHERE q.QuestionId = '{question.Id}'";
+                    question.Tags = _dbConnection.Query<Tag>(sqltag).ToList();
+                }
+            }
+            
             var sqlTag = "SELECT t.Id,t.Name FROM usertag u " +
                 "  LEFT JOIN tags t ON u.TagId = t.Id" +
                 $"  WHERE u.UserId = '{id}'";

@@ -1,4 +1,4 @@
-// import axios from 'axios';
+
 const signUpButton = document.getElementById('signUp');
 const signInButton = document.getElementById('signIn');
 const container = document.getElementById('container');
@@ -45,7 +45,8 @@ function validateSignIn() {
 signup.addEventListener('click', () => {
 	let validate = validateSignUp();
 	if (validate == false) {
-		alert("chưa nhập đúng yêu cầu người dùng");
+		Toast.toast("Hãy nhập đủ các trường yêu cầu", "error");
+
 	} else {
 		console.log("day la user name : " + signUpName.value)
 		console.log("day la email : " + signUpEmail.value)
@@ -65,13 +66,14 @@ signup.addEventListener('click', () => {
 				console.log(response);
 				if (response.data.isValid == true && response.status == 200) {
 					/// đưa ra toast thành công sign up
-					alert("bạn đã đăng kí thành công");
+					Toast.toast("Bạn đã đăng kí thành công", "success");
 				} else {
 					alert(response.data.message);
 				}
 			}).catch(function (response) {
 				//handle error
-				alert("Đã có lỗi vui lòng đăng kí lại")
+				Toast.toast("Đã có lỗi vui lòng đăng kí lại", "error");
+
 				console.log(response);
 			});
 		} catch (error) {
@@ -85,11 +87,13 @@ signup.addEventListener('click', () => {
  * Login
  */
 
-signin.addEventListener('click', () => {
+signin.addEventListener('click', (event) => {
+	event.preventDefault();
 	let validate = validateSignIn();
 	if (validate == false) {
-		alert("Hãy nhập cả 2 trường email và password");
+		Toast.toast("Hãy nhập đủ 2 trường", "error");
 	} else {
+		console.log("hashasahahah");
 		var user = {
 			Username: signInEmail.value,
 			Password: signInPassword.value,
@@ -102,19 +106,20 @@ signin.addEventListener('click', () => {
 			//handle success
 			console.log(response)
 			if (response.data.isValid == true && response.status == 200) {
-				localStorage.setItem('userId',response.data.message);
-				localStorage.setItem('profileId',response.data.message);
-				localStorage.setItem('username', signInEmail.value);
-				localStorage.setItem('tags',JSON.stringify(response.data.tags))
+				window.sessionStorage.setItem('userId',response.data.message);
+				window.sessionStorage.setItem('profileId',response.data.message);
+				window.sessionStorage.setItem('username', signInEmail.value);
+				window.sessionStorage.setItem('tags',JSON.stringify(response.data.tags))
 				window.location = `http://127.0.0.1:5500/html/home.html`
 			} else {
 				alert(response.data.message);
 			}
-		})
-			.catch(function (response) {
-				//handle error
-				alert("Đã có lỗi xảy ra vui long đăng nhập lại");
-				console.log(response);
-			});
+		}).catch(function (response) {
+			//handle error
+			Toast.toast("Đã có lỗi xảy ra vui long đăng nhập lại", "error");
+			console.log(response);
+		});
+			
 	}
+	console.log("hjaha");
 })

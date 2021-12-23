@@ -10,10 +10,10 @@ namespace CnWeb.Service
     public class QuestionService
     {
         ServiceResult serviceResult = new ServiceResult();
-        public IEnumerable<Question> GetAll()
+        public IEnumerable<Question> GetAll(string StringFilter)
         {
             QuestionRepository questionRepository = new QuestionRepository();
-            var entities = questionRepository.GetAll();
+            var entities = questionRepository.GetAll(StringFilter);
             //var entities = questionRepository.GetDetail("tan");
             return entities;
         }
@@ -63,8 +63,24 @@ namespace CnWeb.Service
             return serviceResult;
         }
 
+        public ServiceResult UpdateQuestion(Question question)
+        {
+            QuestionRepository questionRepository = new QuestionRepository();
+            var rowEntity = questionRepository.UpdateQuestion(question);
+            if (rowEntity > 0)
+            {
+                serviceResult.IsValid = true;
+                serviceResult.Message = "Update Question Success";
+            }
+            else
+            {
+                serviceResult.IsValid = false;
+                serviceResult.Message = "Update Question Failed";
+            }
+            return serviceResult;
+        }
 
-        
+
 
 
     }

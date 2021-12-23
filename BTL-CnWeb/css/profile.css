@@ -8,6 +8,7 @@ html {
     flex-wrap: nowrap;
     margin-left: -5px;
     margin-right: -5px;
+    height: 100%;
 }
 
 .grid__column-3 {
@@ -21,7 +22,10 @@ html {
     padding-right: 5px;
     width: 75%;
 }
-
+.profile-nav {
+    max-width: 300px;
+    min-width: 300px;
+}
 .profile-nav, .profile-info{
     margin-top:30px;   
 }
@@ -251,3 +255,120 @@ html {
     align-items: center;
     justify-content: flex-end;
 }
+.my-question {
+    flex: 1;
+    overflow: auto;
+    display: none;
+    /* height: 100%; */
+    /* border: 1px solid #f48225; */
+    /* background-color: #fdf7e2; */
+    border-left: 1px solid #f48225;
+    padding-left: 10px;
+}
+
+
+.question-summary {
+    width: 100%;
+    padding-left: 8px;
+    box-sizing: border-box;
+    display: flex;
+    padding: 12px 8px;
+    float: none;
+    overflow: hidden;
+    border-bottom: 1px solid hsl(210,8%,85%);
+}
+.cp {
+    float: none;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    margin-right: 0;
+    padding: 0 8px 0 0;
+    box-sizing: content-box;
+    flex-shrink: 0;
+    vertical-align: top;
+}
+
+.summary {
+    flex: 1 auto;
+    width: auto;
+    float: none;
+    margin: 0;
+    overflow: hidden;
+}
+
+.votes {
+    display: inline-block;
+    height: 38px;
+    min-width: 38px;
+    margin: 0 3px 0 0;
+    color: hsl(210,8%,55%);
+    padding: 6px;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.status-answer {
+    display: inline-block;
+    height: 38px;
+    min-width: 38px;
+    margin: 0 3px 0 0;
+    color: hsl(210,8%,55%);
+    padding: 6px;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+.views {
+    display: inline-block;
+    height: 38px;
+    min-width: 38px;
+    margin: 0 3px 0 0;
+    color: hsl(210,8%,55%);
+    padding: 6px;
+    text-align: center;
+    line-height: 1;
+    margin-bottom: 4px;
+}
+h3 {
+    margin: 0px;
+    padding: 0px;
+}
+.summary h3 {
+    margin-bottom: 4px;
+}
+.summary h3 a {
+    font-size: 1.30769231rem;
+    font-weight: 400;
+    color: #0074CC;
+}
+
+
+.summary-tags {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+}
+
+.time-owner {
+    flex: 1;
+}
+.time-owner span {
+    float: right;
+}
+
+.post-tags {
+    line-height: 1;
+    border-color: #ffffff;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 3px;
+    padding: 4px 6px;
+    color: #39739D;
+    background-color: #E1ECF4;
+    margin-right: 3px;
+}
+

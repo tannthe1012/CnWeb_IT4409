@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/askquestion.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/toast.css">
     <link rel="stylesheet" href="../assets/font/fontawesome-free-6.0.0-beta2-web/css/all.min.css">
     <title>Document</title>
 </head>
@@ -21,8 +22,8 @@
                     <i class="fas fa-home"></i>
                 </div>
                 <div class="input-search">
-                    <div class="icon-search"></div>
-                    <input type="text" placeholder="Search">
+                    <div class="icon-search" id="btn-search"></div>
+                    <input type="text" placeholder="Search" id="stringfilter">
                 </div>
             </div>
             <div class="header-right">
@@ -230,9 +231,12 @@
             </div>
         </div>
     </div>
+    <div id="toast"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
     <script src="../js/askquestion.js"></script>
     <script src="../js/header.js"></script>
+    <script src="../js/toast.js"></script>
     
 </body>
 

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/questiondetail.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/toast.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../assets/font/fontawesome-free-6.0.0-beta2-web/css/all.min.css">
     <title>Document</title>
@@ -22,8 +23,8 @@
                     <i class="fas fa-home"></i>
                 </div>
                 <div class="input-search">
-                    <div class="icon-search"></div>
-                    <input type="text" placeholder="Search">
+                    <div class="icon-search" id="btn-search"></div>
+                    <input type="text" placeholder="Search" id="stringfilter">
                 </div>
             </div>
             <div class="header-right">
@@ -66,7 +67,7 @@
         <div class="content">
             <div class="question-header">
                 <h1 id="question-title">Keycloak SPIs jar file doesn't get deployed</h1>
-                <button class="btn-ask" id="question-ask">Ask Question</button>
+                <button class="btn-ask" id="question-ask" style="height: 38px;">Ask Question</button>
             </div>
             <div class="d-flex-question">
                 <div class="flex-item">
@@ -80,6 +81,15 @@
                 <div class="flex-item">
                     <span>Owner </span>
                     <div id="question-header-owner">5</div>
+                </div>
+                <div class="btn-option-question" id="option-question">
+                    <div id="setting-question" class="openedit">
+                        <i class="fas fa-bars" style="flex: 1; text-align: center;"></i>
+                    </div>
+                    <div class="bound-edit none" style="right: 65px; bottom: -25px;" id="context-menu-question">
+                        <div class="edit-btn" answerId="" onclick="editquestion(event)">Edit</div>
+                        <div class="delete-btn" answerId="" onclick="deletequestion(event)">Delete</div>
+                    </div>
                 </div>
             </div>
 
@@ -323,7 +333,79 @@
         </div>
 
     </div>
+    
+    <div id="myModalQuestion" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close" id="close-update-question">&times;</span>
+            <h3 style="margin-bottom: 20px;">Your Question</h3>
+            <div class="detail-user">
+                
+                <div class="data-user">
+                    <h3 style="margin-bottom: 20px;">Title</h3>
+                    <input type="text" id="edit-title-question">
+                    <h3 style="margin-bottom: 20px;">Content</h3>
+                    <textarea name="post-text" id="edit-content-question" style="margin-top: 0px;" cols="30" rows="10"></textarea>
+                    <h3 style="margin-bottom: 20px;">Tags</h3>
+                    <div class="tag-flex">
+                        <div class="left" style="width: 50%;">
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="37dd9bb0-4c53-4134-31de-23e177779933"
+                                    name="5" value="HTML">
+                                <label for="html">HTML</label>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="1b691e79-236d-5b5a-9d20-39c2f00615e8"
+                                    name="6" value="CSS">
+                                <label for="css">CSS</label>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="148ed882-32b8-218e-9c20-39c2f00615e8"
+                                    name="7" value="Javascript">
+                                <label for="javascript">Javascript</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="354f1b13-17bf-1b52-87d5-ba100c6f7bce"
+                                    name="8" value="Java">
+                                <label for="Java">Java</label>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="25c6c36e-1668-7d10-6e09-bf1378b8dc91"
+                                    name="1" value="C#">
+                                <label for="C#">C#</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="3b86d2ed-446c-5fce-56be-406293204378"
+                                    name="2" value="Python">
+                                <label for="Python">Python</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="3700cc49-55b5-69ea-4929-a2925c0f334d"
+                                    name="3" value="Ktolin">
+                                <label for="Ktolin">Ktolin</label><br>
+                            </div>
+                            <div class="input_tag">
+                                <input type="checkbox" class="messageCheckbox" id="6b47b37f-3123-3ce7-14cf-9712082ff6cb"
+                                    name="4" value="C">
+                                <label for="C">C</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="btn-save">
+                <button id="btn-update-question" class="btn-ask">Save</button>
+            </div>
+        </div>
+
+    </div>
+    <div id="toast"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="../js/toast.js"></script>
     <script src="../js/questiondetail.js"></script>
     <script src="../js/header.js"></script>
 

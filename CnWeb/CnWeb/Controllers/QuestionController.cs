@@ -16,14 +16,18 @@ namespace CnWeb.Controllers
         QuestionService questionService = new QuestionService();
         ServiceResult serviceResult = new ServiceResult();
         [HttpGet]
-        public IActionResult GetAll()
+        public IActionResult GetAll(string StringFilter)
         {
-            var entities = questionService.GetAll();
+            var entities = questionService.GetAll(StringFilter);
             //trả về kết quả
             if (entities.Count() > 0)
+            {
                 return Ok(entities);
+            } 
             else
-                return BadRequest();
+            {
+               return NoContent();
+            }
         }
 
         [HttpGet("{id}/{userId}")]
@@ -50,7 +54,19 @@ namespace CnWeb.Controllers
             }
         }
 
-
+        [HttpPut]
+        public IActionResult UpdateQuestion(Question question)
+        {
+            serviceResult = questionService.UpdateQuestion(question);
+            if (serviceResult.IsValid == true)
+            {
+                return Ok(serviceResult);
+            }
+            else
+            {
+                return BadRequest(serviceResult);
+            }
+        }
 
         [HttpPut("like")]
         public IActionResult PostLike(UserQuestion userQuestion)

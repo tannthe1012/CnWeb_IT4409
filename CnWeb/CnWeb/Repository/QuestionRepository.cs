@@ -18,13 +18,17 @@ namespace CnWeb.Repository
             _connectionString = "Host = localhost;Port = 3306;Database = cnweb_4409;User Id=root;Password = thetan123";
             _dbConnection = new MySqlConnection(_connectionString);
         }
-        public IEnumerable<Question> GetAll()
+        public IEnumerable<Question> GetAll(string StringFilter)
         {
-            
+            if (StringFilter == null)
+            {
+                StringFilter = "";
+            }
             var sqlCommand = "SELECT q.Id,q.Title,q.Content,q.CreateTime,q.ModifyTime, q.View,q.UserId, countanswer.ca AS CountAnswer, u.Name, countlike.cl AS CountVote FROM question q" +
                 " LEFT JOIN (SELECT a.QuestionId, COUNT(*) AS ca FROM answer a GROUP BY a.QuestionId) AS countanswer ON countanswer.QuestionId = q.Id" +
                 " LEFT JOIN user u ON q.UserId = u.Id" +
                 " LEFT JOIN (SELECT uq.QuestionId, COUNT(*) AS cl FROM userquestion uq GROUP BY uq.QuestionId) AS countlike ON countlike.QuestionId = q.Id" +
+                $" WHERE q.Title LIKE CONCAT('%','{StringFilter}', '%') OR q.Content LIKE CONCAT('%','{StringFilter}', '%')" +
                 " ORDER BY q.CreateTime DESC";
             var entities = _dbConnection.Query<Question>(sqlCommand).ToList();
             foreach (var question in entities)
@@ -44,7 +48,7 @@ namespace CnWeb.Repository
             var sqlUpdateView = $"UPDATE question AS a SET a.View = a.View + 1 WHERE a.Id = '{id}'";
             _dbConnection.Execute(sqlUpdateView);
             // get question
-            var sqlCommand = "SELECT q.Id,q.Title,q.Content,q.CreateTime,q.ModifyTime, q.View,countanswer.ca AS CountAnswer, u.Name, countlike.cl AS CountLike FROM question q" +
+            var sqlCommand = "SELECT q.Id,q.Title,q.Content,q.CreateTime,q.ModifyTime, q.View,countanswer.ca AS CountAnswer, u.Name, countlike.cl AS CountLike, q.UserId FROM question q" +
                 " LEFT JOIN (SELECT a.QuestionId, COUNT(*) AS ca FROM answer a GROUP BY a.QuestionId) AS countanswer ON countanswer.QuestionId = q.Id" +
                 " LEFT JOIN user u ON q.UserId = u.Id" +
                 " LEFT JOIN (SELECT uq.QuestionId, SUM(uq.Status) AS cl FROM userquestion uq GROUP BY uq.QuestionId) AS countlike ON countlike.QuestionId = q.Id" +
@@ -136,7 +140,20 @@ namespace CnWeb.Repository
             return row;
         }
 
-
+        public int UpdateQuestion(Question question)
+        {
+            var sql = $"UPDATE QUESTION SET Title = '{question.Title}', ModifyTime = Now(), Content = '{question.Content}' WHERE Id = '{question.Id}'";
+            var row = _dbConnection.Execute(sql);
+            var rowtag = 0;
+            string sqlDelete = $"DELETE FROM questiontag WHERE QuestionId = '{question.Id}'";
+            var rowEntity = _dbConnection.Execute(sqlDelete);
+            foreach (var tag in question.Tags)
+            {
+                string sqlUpdate = $"INSERT INTO questiontag (QuestionId, TagId) VALUES ('{question.Id}', '{tag.Id}')";
+                rowtag = _dbConnection.Execute(sqlUpdate);
+            }
+            return row + rowEntity + rowtag;
+        }
 
 
 

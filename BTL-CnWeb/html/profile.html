@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="../css/footer.css">
     <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/toast.css">
+
     <link rel="stylesheet" href="../assets/font/fontawesome-free-6.0.0-beta2-web/css/all.min.css">
     <link rel="stylesheet" href="../assets/font/fontawesome-free-6.0.0-beta2-web/css/all.css">
     <title>Document</title>
@@ -26,8 +28,8 @@
                     <i class="fas fa-home"></i>
                 </div>
                 <div class="input-search">
-                    <div class="icon-search"></div>
-                    <input type="text" placeholder="Search">
+                    <div class="icon-search" id="btn-search"></div>
+                    <input type="text" placeholder="Search" id="stringfilter">
                 </div>
             </div>
             <div class="header-right">
@@ -78,14 +80,14 @@
                         </div>
 
                         <ul class="user-nav">
-                            <li class="active"><a href="#"> <i class="fas fa-user"></i> Profile</a></li>
-                            <li><a href="#"> <i class="fas fa-calendar"></i> Recent Activity </a></li>
-                            <li><a href="#" id="open-edit-profile"> <i class="fas fa-edit"></i> Edit profile</a></li>
+                            <li id="btn-show-profile" class="active"><a href="#"> <i class="fas fa-user"></i> Profile</a></li>
+                            <li id="owner-questions"><a href="#" > <i class="fas fa-calendar"></i> Questions</a></li>
+                            <li id="open-edit-profile"><a href="#"> <i class="fas fa-edit"></i> Edit profile</a></li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="profile-info grid__column-9">
+                <div class="profile-info grid__column-9" id="profile-content">
                     <div class="panel">
                         <div class="panel-element">
                             <div class="bio-graph-heading">
@@ -148,6 +150,63 @@
                                 <a href="#" class="tag">Python</a>
                             </div>
 
+                        </div>
+                    </div>
+                </div>
+                <div class="my-question profile-info grid__column-9" id="my-questions">
+                    <div class="question-summary">
+                        <div class="cp">
+                            <div class="votes">
+                                <div class="mini-counts">0</div>
+                                <div>votes</div>
+                            </div>
+                            <div class="status-answer">
+                                <div class="mini-counts">2</div>
+                                <div>answers</div>
+                            </div>
+                            <div class="views">
+                                <div class="mini-counts">172</div>
+                                <div>views</div>
+                            </div>
+                        </div>
+                        <div class="summary">
+                            <h3><a href="#" id="042272c3-cfff-4dab-81ef-e90b29f3e52a" class="question_click"
+                                    name="detail_question" onclick="detailQuestion(event)">The Two Cultures: statistics
+                                    vs. machine learning?</a></h3>
+                            <div class="summary-tags">
+                                <a href="#" class="post-tags">C#</a>
+                                <a href="#" class="post-tags">Python</a>
+
+                                <div class="time-owner">
+                                    <span>asked 11 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question-summary">
+                        <div class="cp">
+                            <div class="votes">
+                                <div class="mini-counts">2</div>
+                                <div>votes</div>
+                            </div>
+                            <div class="status-answer">
+                                <div class="mini-counts">1</div>
+                                <div>answers</div>
+                            </div>
+                            <div class="views">
+                                <div class="mini-counts">30</div>
+                                <div>views</div>
+                            </div>
+                        </div>
+                        <div class="summary">
+                            <h3><a href="#" id="7ad34860-1ac8-7ad7-d01d-086412a8ea97" class="question_click" name="detail_question" onclick="detailQuestion(event)">Designing a uniformly most powerful test.</a></h3>
+                            <div class="summary-tags">
+                            <a href="#" class="post-tags">HTML</a>
+        
+                                <div class="time-owner">
+                                    <span>asked 2 months ago</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -286,7 +345,10 @@
         </div>
 
     </div>
+    <div id="toast"></div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.js"></script>
+    <script src="../js/toast.js"></script>
     <script src="../js/profile.js"></script>
     <script src="../js/header.js"></script>
 

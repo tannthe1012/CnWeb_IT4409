@@ -17,6 +17,7 @@ namespace CnWeb.Model
         public int CountQuestion { get; set; }
         public int CountAnswer { get; set; }
         public List<Tag> Tags { get; set; }
+        public List<Question> Questions { get; set; }
 
     }
 }
